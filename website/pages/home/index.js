@@ -6,7 +6,6 @@ import { Card } from 'components/card'
 import { Title } from 'components/intro'
 import { Link } from 'components/link'
 import { ListItem } from 'components/list-item'
-import { projects } from 'content/projects'
 import { useScroll } from 'hooks/use-scroll'
 import { Layout } from 'layouts/default'
 import { button, useControls } from 'leva'
@@ -17,7 +16,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useIntersection, useWindowSize } from 'react-use'
 import s from './home.module.scss'
 
-const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
+// const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
 
 const Parallax = dynamic(
@@ -197,9 +196,8 @@ export default function Home() {
     <Layout
       theme={theme}
       seo={{
-        title: 'Lenis – Get smooth or die trying',
-        description:
-          'A new smooth scroll library fresh out of the Studio Freight Darkroom',
+        title: '',
+        description: '',
       }}
       className={s.home}
     >
@@ -210,15 +208,15 @@ export default function Home() {
       <section className={s.hero}>
         <div className="layout-grid-inner">
           <Title className={s.title} />
-          <SFDR className={cn(s.icon, introOut && s.show)} />
+          {/* <SFDR className={cn(s.icon, introOut && s.show)} /> */}
           <span className={cn(s.sub)}>
             <HeroTextIn introOut={introOut}>
-              <h2 className={cn('h3', s.subtitle)}>Smooth Scroll</h2>
+              <h2 className={cn('h3', s.subtitle)}>Transfer Your ticket</h2>
             </HeroTextIn>
             <HeroTextIn introOut={introOut}>
-              <h2 className={cn('p-xs', s.tm)}>
-                <span>©</span> {new Date().getFullYear()} Studio Freight
-              </h2>
+              {/* <h2 className={cn('p-xs', s.tm)}>
+                <span>©</span> {new Date().getFullYear()} Tix
+              </h2> */}
             </HeroTextIn>
           </span>
         </div>
@@ -390,7 +388,7 @@ export default function Home() {
               <span className="contrast">web scrolling</span>
             </h2>
             <h2 className={cn(s.enter, 'h3 vh')}>
-              Enter <br /> Lenis
+              Enter <br /> TiX
             </h2>
             <h2 className={cn(s.second, 'h1 vh')}>As it should be</h2>
           </div>
