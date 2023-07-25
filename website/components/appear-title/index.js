@@ -1,12 +1,11 @@
-import { useMediaQuery, useRect } from '@studio-freight/hamo'
+import { useRect } from '@studio-freight/hamo'
 import cn from 'clsx'
-import { gsap } from 'gsap'
-import { SplitText } from 'gsap/dist/SplitText'
+// import { SplitText } from 'gsap/dist/SplitText'
 import { useEffect, useRef, useState } from 'react'
-import { useIntersection, useWindowSize } from 'react-use'
+import { useIntersection } from 'react-use'
 import s from './appear-title.module.scss'
 
-gsap.registerPlugin(SplitText)
+// gsap.registerPlugin(SplitText)
 
 export function AppearTitle({ children, visible = true }) {
   const el = useRef()
@@ -22,34 +21,36 @@ export function AppearTitle({ children, visible = true }) {
     }
   }, [intersection])
 
-  const { width } = useWindowSize()
-  const isMobile = useMediaQuery('(max-width: 800px)')
+  // const { width } = useWindowSize()
+  // const isMobile = useMediaQuery('(max-width: 800px)')
 
-  const [rectRef, rect] = useRect()
+  // const [rectRef, rect] = useRect()
 
-  useEffect(() => {
-    if (isMobile === false) {
-      const splitted = new SplitText(el.current, {
-        type: 'lines',
-        lineThreshold: 0.3,
-        tag: 'span',
-        linesClass: s.line,
-      })
+  const [rectRef] = useRect()
 
-      splitted.lines.forEach((line, i) => {
-        line.style.setProperty('--i', i)
-        const html = line.innerHTML
-        line.innerHTML = ''
-        const content = document.createElement('span')
-        content.innerHTML = html
-        line.appendChild(content)
-      })
+  // useEffect(() => {
+  //   if (isMobile === false) {
+  //     const splitted = new SplitText(el.current, {
+  //       type: 'lines',
+  //       lineThreshold: 0.3,
+  //       tag: 'span',
+  //       linesClass: s.line,
+  //     })
 
-      return () => {
-        splitted.revert()
-      }
-    }
-  }, [width, rect, isMobile])
+  //     splitted.lines.forEach((line, i) => {
+  //       line.style.setProperty('--i', i)
+  //       const html = line.innerHTML
+  //       line.innerHTML = ''
+  //       const content = document.createElement('span')
+  //       content.innerHTML = html
+  //       line.appendChild(content)
+  //     })
+
+  //     return () => {
+  //       splitted.revert()
+  //     }
+  //   }
+  // }, [width, rect, isMobile])
 
   return (
     <span
